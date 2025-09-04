@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Daily Assistant (Local)</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0ea5e9">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>🗓️ Daily Assistant</h1>
+    <button id="installBtn" class="btn secondary" hidden>Install App</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Quick Actions</h2>
+      <div class="row">
+        <button id="askPermBtn" class="btn">Enable Notifications</button>
+        <button id="wakeLockBtn" class="btn">Keep Screen Awake</button>
+      </div>
+      <p class="note">Tip: Install to Home Screen for a more app‑like experience. Notifications work only when the app is open on most devices.</p>
+    </section>
+
+    <section class="card">
+      <h2>Add Item</h2>
+      <form id="itemForm" class="grid">
+        <label>
+          Type
+          <select id="type">
+            <option value="class">Class</option>
+            <option value="meal">Meal</option>
+            <option value="wake">Wake-up</option>
+          </select>
+        </label>
+
+        <label id="titleLabel">
+          Title/Label
+          <input id="title" type="text" placeholder="e.g., Physics 101 / Lunch / Wake up" required>
+        </label>
+
+        <label>
+          Date
+          <input id="date" type="date" required>
+        </label>
+
+        <label>
+          Time
+          <input id="time" type="time" required>
+        </label>
+
+        <label>
+          Repeat
+          <select id="repeat">
+            <option value="none">None (one-time)</option>
+            <option value="daily">Daily</option>
+            <option value="weekdays">Weekdays (Mon–Fri)</option>
+            <option value="weekly">Weekly (same day)</option>
+          </select>
+        </label>
+
+        <label>
+          Notify before (minutes)
+          <input id="advance" type="number" min="0" value="5">
+        </label>
+
+        <button class="btn primary" type="submit">Add</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Upcoming</h2>
+      <ul id="upcomingList" class="list"></ul>
+      <div class="row">
+        <button id="exportBtn" class="btn secondary">Export All (.json)</button>
+        <button id="clearBtn" class="btn danger">Clear All</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Templates</h2>
+      <div class="row wrap">
+        <button class="btn chip" data-template="meal:Breakfast:07:30">+ Breakfast 07:30</button>
+        <button class="btn chip" data-template="meal:Lunch:12:00">+ Lunch 12:00</button>
+        <button class="btn chip" data-template="meal:Dinner:18:30">+ Dinner 18:30</button>
+        <button class="btn chip" data-template="wake:Wake up:06:30">+ Wake 06:30</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>About limits</h2>
+      <ul class="bullets">
+        <li>This app runs fully offline and stores data only on your device.</li>
+        <li>Mobile browsers <b>don’t guarantee</b> alarms/notifications when the app is closed.</li>
+        <li>For strict alarms, also set your device’s Clock/Calendar as backup.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>Local Daily Assistant • No cloud • v1.0</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
